@@ -9,7 +9,6 @@ def createSocket(sock_pull):
     server_address = (server_name, 8084)
     print(sys.stderr, 'starting up on %s port %s' % server_address)
     sock.bind(server_address)
-    sock.listen(1)
     return sock
 
 if __name__ == "__main__":
@@ -19,6 +18,7 @@ if __name__ == "__main__":
     sock_pull.connect(r"tcp://localhost:8083")
 
     sock = createSocket(sock_pull)
+    sock.listen(1)
 
     while True:
         print(sys.stderr, 'waiting for a connection')
